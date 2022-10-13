@@ -1,12 +1,15 @@
 const express = require("express");
 const fs = require("fs");
 const videosRoutes = require("./routes/videosRoutes");
-require("dotenv").config();
+const cors = require("cors");
 
-console.log(process.env.port);
+require("dotenv").config();
 const port = process.env.port;
+
 const app = express();
-app.use(express.json()); // adds a built in middleware
+app.use(express.static("public"));
+app.use(cors());
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log(`Incoming request:  ${req.path}`);

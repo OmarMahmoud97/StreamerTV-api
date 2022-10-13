@@ -14,7 +14,7 @@ router
   })
   .post("/", (req, res) => {
     videoData.push(req.body);
-    fs.writeFile("./data/videos.json", JSON.stringify(videoData), (err) => {
+    fs.writeFileSync("./data/videos.json", JSON.stringify(videoData), (err) => {
       if (err) {
         console.error(err);
       }
